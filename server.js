@@ -8,7 +8,7 @@ const app = express();
 const PORT = 5000;
 
 const corsOptions = {
-  origin: 'https://loginreactnode.onrender.com',
+  origin: 'http://localhost:10000',
 };
 
 app.use(cors(corsOptions));

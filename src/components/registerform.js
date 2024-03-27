@@ -22,7 +22,7 @@ function RegistrationForm({ onBackToLogin, onRegister }) {
 	
 	const register = async (username, password1) => {
         try {
-            const response = await fetch('https://loginreactnode.onrender.com:5000/register', {
+            const response = await fetch('http://localhost:5000/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
