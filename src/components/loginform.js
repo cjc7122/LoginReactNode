@@ -16,7 +16,7 @@ function LoginForm({ onShowRegistration }) {
 	
 	const login = async (username, password) => {
         try {
-            const response = await fetch('https://loginreactnode.onrender.com:10000/login', {
+            const response = await fetch('https://loginreactnode.onrender.com:5000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
