@@ -5,10 +5,10 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 const corsOptions = {
-  origin: 'http://localhost:3000'
+  origin: 'https://loginreactnode.onrender.com',
 };
 
 app.use(cors(corsOptions));
