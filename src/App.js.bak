@@ -1,0 +1,29 @@
+// src/App.js
+
+import React, { useState } from 'react';
+import './App.css';
+import LoginForm from './components/loginform';
+import RegistrationForm from './components/registerform';
+
+function App() {
+    const [showRegistration, setShowRegistration] = useState(false);
+
+    const handleShowRegistration = () => {
+        setShowRegistration(true);
+    };
+
+    const handleBackToLogin = () => {
+        setShowRegistration(false);
+    };
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <LoginForm onShowRegistration={handleShowRegistration} />
+                {showRegistration && <RegistrationForm onBackToLogin={handleBackToLogin} />}
+            </header>
+        </div>
+    );
+}
+
+export default App;

@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+
+function LoginForm({ onShowRegistration }) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+	
+	const handleLogin = () => {
+        if (!username || !password) {
+            setError('Please enter both username and password');
+            return;
+        }
+
+        login(username, password);
+    };
+	
+	const login = async (username, password) => {
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                // Login successful, perform necessary actions
+            } else {
+                setError(data.message || 'Login failed');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            setError('An unexpected error occurred');
+        }
+    };
+	
+    return (
+        <div id="login-popup" className="popup">
+            <h2>Login</h2>
+            <div className="rowholder">
+                <label htmlFor="username">Username:</label>
+                <input type="email" id="username" name="username" className="username-input" value={username} onChange={(e) => setUsername(e.target.value)} required />
+            </div>
+            <div className="rowholder">
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" name="password" className="password-input" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </div>
+			
+            <button type="button" id="pop-up-login" onClick={handleLogin}>Login</button>
+            <label id="pop-up-switch" onClick={onShowRegistration}>Don't have an account? Register here!</label>
+            
+            <br />
+            <label id="ErrorMSG">{error}</label>
+        </div>
+    );
+}
+
+export default LoginForm;
